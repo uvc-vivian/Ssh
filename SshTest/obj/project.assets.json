@@ -8,19 +8,27 @@
           "SshNet.Security.Cryptography": "[1.3.0]"
         },
         "compile": {
-          "lib/netstandard2.0/Renci.SshNet.dll": {}
+          "lib/netstandard2.0/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Renci.SshNet.dll": {}
+          "lib/netstandard2.0/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
         }
       },
       "SshNet.Security.Cryptography/1.3.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {}
+          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {}
+          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {
+            "related": ".xml"
+          }
         }
       }
     }
@@ -97,19 +105,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\uvcvivian\\.nuget\\packages\\": {}
+    "C:\\Users\\JOY\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkSpace\\Hyundai\\auto\\SshTest\\SshTest\\SshTest.csproj",
+      "projectUniqueName": "C:\\Workspace\\Hyundai\\auto\\SshTest\\SshTest.csproj",
       "projectName": "SshTest",
-      "projectPath": "C:\\WorkSpace\\Hyundai\\auto\\SshTest\\SshTest\\SshTest.csproj",
-      "packagesPath": "C:\\Users\\uvcvivian\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkSpace\\Hyundai\\auto\\SshTest\\SshTest\\obj\\",
+      "projectPath": "C:\\Workspace\\Hyundai\\auto\\SshTest\\SshTest.csproj",
+      "packagesPath": "C:\\Users\\JOY\\.nuget\\packages\\",
+      "outputPath": "C:\\Workspace\\Hyundai\\auto\\SshTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\uvcvivian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\JOY\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -146,7 +154,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -155,7 +164,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
