@@ -37,7 +37,7 @@ namespace SshNet
                 var output = shellStream.Expect(new Regex(@"[$>]"));
                 //shellStream.WriteLine("cd /home/edge/Huyundai/Doosan");
                 //shellStream.WriteLine("ls");
-                shellStream.WriteLine("sudo sh /home/edge/Huyundai/Doosan/start.sh");
+                shellStream.WriteLine("sudo sh /home/advantech/run.sh");
                 output = shellStream.Expect(new Regex(@"([$#>:])"));
                 shellStream.WriteLine(password);
 
