@@ -12,25 +12,27 @@ namespace SshNet
         static void Main()
         {
             //Doosan config
+            string doosanName = "DOOSAN";
             string doosanAddress = "10.20.193.62";
             int doosanPort = 4052;
             string doosanUser = "advantech";
             string doosanPw = "opcua5497";
             string doosanPath = "/home/advantech/run.sh";
-            AccessSsh(doosanAddress, doosanPort, doosanUser, doosanPw, doosanPath);
+            AccessSsh(doosanName, doosanAddress, doosanPort, doosanUser, doosanPw, doosanPath);
 
             //KUKA config
+            string kukaName = "KUKA";
             string kukaAddress = "10.20.193.101";
             int kukaPort = 22;
             string kukaUser = "hyundai";
             string kukaPw = "opcua5497";
             string kukaPath = "/home/hyundai/Hyundai-KUKA/run.sh";
-            AccessSsh(kukaAddress, kukaPort, kukaUser, kukaPw, kukaPath);
+            AccessSsh(kukaName, kukaAddress, kukaPort, kukaUser, kukaPw, kukaPath);
 
         }
 
         //Access SSH & Run SmartConnector (run.sh) 
-        static void AccessSsh(string address, int port, string user, string password, string path)
+        static void AccessSsh(string name, string address, int port, string user, string password, string path)
         {
             try
             {
@@ -54,6 +56,25 @@ namespace SshNet
                 while((line = shellStream.ReadLine()) != null)
                 {
                     Console.WriteLine(line);
+                }
+
+                Console.WriteLine($"{name} SmartConnector Started. Press Z to exit...");
+                while (true)
+                {
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo key = Console.ReadKey();
+                        if (key.Key == ConsoleKey.Z)
+                        {
+                            shellStream.WriteLine("cd /");
+                            output = shellStream.Expect(new Regex(@"[$>]"));
+                            shellStream.WriteLine($"sudo sh {path}stop.sh");
+                            output = shellStream.Expect(new Regex(@"([$#>:])"));
+                            shellStream.WriteLine(password);
+                            Console.WriteLine("\r\n--- SmartConnector Stopped ---");
+                            client.Disconnect();
+                        }
+                    }
                 }
             }
             catch (Exception ex)

@@ -102,11 +102,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkSpace\\Hyundai\\auto\\Ssh\\SshTest\\SshTest.csproj",
+      "projectUniqueName": "C:\\WorkSpace\\Hyundai\\auto\\SSH-SC\\SshTest\\SshTest.csproj",
       "projectName": "SshTest",
-      "projectPath": "C:\\WorkSpace\\Hyundai\\auto\\Ssh\\SshTest\\SshTest.csproj",
+      "projectPath": "C:\\WorkSpace\\Hyundai\\auto\\SSH-SC\\SshTest\\SshTest.csproj",
       "packagesPath": "C:\\Users\\uvcvivian\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkSpace\\Hyundai\\auto\\Ssh\\SshTest\\obj\\",
+      "outputPath": "C:\\WorkSpace\\Hyundai\\auto\\SSH-SC\\SshTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\uvcvivian\\AppData\\Roaming\\NuGet\\NuGet.Config",
