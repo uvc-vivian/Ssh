@@ -17,7 +17,7 @@ namespace SshNet
             int doosanPort = 4052;
             string doosanUser = "advantech";
             string doosanPw = "opcua5497";
-            string doosanPath = "/home/advantech/run.sh";
+            string doosanPath = "/home/advantech/SmartConnector";
             AccessSsh(doosanName, doosanAddress, doosanPort, doosanUser, doosanPw, doosanPath);
 
             //KUKA config
@@ -26,7 +26,7 @@ namespace SshNet
             int kukaPort = 22;
             string kukaUser = "hyundai";
             string kukaPw = "opcua5497";
-            string kukaPath = "/home/hyundai/Hyundai-KUKA/run.sh";
+            string kukaPath = "/home/hyundai/Hyundai-KUKA";
             AccessSsh(kukaName, kukaAddress, kukaPort, kukaUser, kukaPw, kukaPath);
 
         }
@@ -48,7 +48,7 @@ namespace SshNet
                 //execute start.sh script
                 ShellStream shellStream = client.CreateShellStream("xterm", 80, 24, 800, 600, 1024, termkvp);
                 var output = shellStream.Expect(new Regex(@"[$>]"));
-                shellStream.WriteLine($"sudo sh {path}");
+                shellStream.WriteLine($"sudo sh {path}/run.sh");
                 output = shellStream.Expect(new Regex(@"([$#>:])"));
                 shellStream.WriteLine(password);
 
@@ -68,7 +68,7 @@ namespace SshNet
                         {
                             shellStream.WriteLine("cd /");
                             output = shellStream.Expect(new Regex(@"[$>]"));
-                            shellStream.WriteLine($"sudo sh {path}stop.sh");
+                            shellStream.WriteLine($"sudo sh {path}/stop.sh");
                             output = shellStream.Expect(new Regex(@"([$#>:])"));
                             shellStream.WriteLine(password);
                             Console.WriteLine("\r\n--- SmartConnector Stopped ---");
