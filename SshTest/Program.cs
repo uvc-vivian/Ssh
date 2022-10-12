@@ -11,21 +11,26 @@ namespace SshNet
     {
         static void Main()
         {
-            string address = "10.20.193.62";
-            int port = 4052;
-            string user = "advantech";
-            string password = "opcua5497";
-            AccessSsh(address, port, user, password);
+            //Doosan config
+            string doosanAddress = "10.20.193.62";
+            int doosanPort = 4052;
+            string doosanUser = "advantech";
+            string doosanPw = "opcua5497";
+            string doosanPath = "/home/advantech/run.sh";
+            AccessSsh(doosanAddress, doosanPort, doosanUser, doosanPw, doosanPath);
 
-            string KUKAaddress = "10.20.193.101";
-            int KUKAport = 22;
-            string KUKAuser = "hyundai";
-            string KUKApw = "opcua5497";
-            AccessKUKASsh(KUKAaddress, KUKAport, KUKAuser, KUKApw);
+            //KUKA config
+            string kukaAddress = "10.20.193.101";
+            int kukaPort = 22;
+            string kukaUser = "hyundai";
+            string kukaPw = "opcua5497";
+            string kukaPath = "/home/hyundai/Hyundai-KUKA/run.sh";
+            AccessSsh(kukaAddress, kukaPort, kukaUser, kukaPw, kukaPath);
 
         }
 
-        static void AccessSsh(string address, int port, string user, string password)
+        //Access SSH & Run SmartConnector (run.sh) 
+        static void AccessSsh(string address, int port, string user, string password, string path)
         {
             try
             {
@@ -41,9 +46,7 @@ namespace SshNet
                 //execute start.sh script
                 ShellStream shellStream = client.CreateShellStream("xterm", 80, 24, 800, 600, 1024, termkvp);
                 var output = shellStream.Expect(new Regex(@"[$>]"));
-                //shellStream.WriteLine("cd /home/edge/Huyundai/Doosan");
-                //shellStream.WriteLine("ls");
-                shellStream.WriteLine("sudo sh /home/advantech/run.sh");
+                shellStream.WriteLine($"sudo sh {path}");
                 output = shellStream.Expect(new Regex(@"([$#>:])"));
                 shellStream.WriteLine(password);
 
@@ -58,7 +61,7 @@ namespace SshNet
                 System.Console.WriteLine(ex.ToString());
             }
         }
-
+        /*
         static void AccessKUKASsh(string address, int port, string user, string password)
         {
             try
@@ -91,6 +94,6 @@ namespace SshNet
             {
                 System.Console.WriteLine(ex.ToString());
             }
-        }
+        } */
     }
 }
