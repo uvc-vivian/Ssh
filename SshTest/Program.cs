@@ -48,7 +48,8 @@ namespace SshNet
                 //execute start.sh script
                 ShellStream shellStream = client.CreateShellStream("xterm", 80, 24, 800, 600, 1024, termkvp);
                 var output = shellStream.Expect(new Regex(@"[$>]"));
-                shellStream.WriteLine($"sudo sh {path}/run.sh");
+                shellStream.WriteLine($"cd {path}");
+                shellStream.WriteLine("sudo sh run.sh");
                 output = shellStream.Expect(new Regex(@"([$#>:])"));
                 shellStream.WriteLine(password);
 
@@ -66,9 +67,9 @@ namespace SshNet
                         ConsoleKeyInfo key = Console.ReadKey();
                         if (key.Key == ConsoleKey.Z)
                         {
-                            shellStream.WriteLine("cd /");
+                            shellStream.WriteLine($"cd {path}");
                             output = shellStream.Expect(new Regex(@"[$>]"));
-                            shellStream.WriteLine($"sudo sh {path}/stop.sh");
+                            shellStream.WriteLine("sudo sh stop.sh");
                             output = shellStream.Expect(new Regex(@"([$#>:])"));
                             shellStream.WriteLine(password);
                             Console.WriteLine("\r\n--- SmartConnector Stopped ---");
